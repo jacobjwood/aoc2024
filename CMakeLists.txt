@@ -18,4 +18,3 @@ add_executable(get_input_day_x helpers/get_input_day_x.cpp)
 add_library(helpers helpers/helpers.cpp)
 # Link against curl
 target_link_libraries(get_input_day_x curl)
-add_executable(day1 day1/solution.cpp helpers/helpers.cpp)
