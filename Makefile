@@ -11,7 +11,7 @@ day_setup:
 	if ! [ -f day$(day)/solution.cpp ]; \
 	then \
 		cp templates/day{x}.cpp day${day}/solution.cpp; \
-		sed -i 's/<DAY>/${day}/g' day${day}/solution.cpp; \
+		sed -i.bak 's/<DAY>/${day}/g' day${day}/solution.cpp && rm day${day}/solution.cpp.bak; \
 		echo "add_executable(day${day} day${day}/solution.cpp helpers/helpers.cpp)" >> CMakeLists.txt; \
 	else \
 		echo "Solution file already created. Skipping..."; \
