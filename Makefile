@@ -17,10 +17,10 @@ day_setup:
 		echo "Solution file already created. Skipping..."; \
 	fi
 
-build:
-	cd build && cmake && make
+build_all:
+	cd build && cmake .. && make
 
 run:
 	clang-format day${day}/*.cpp 
-	cd build && cmake && make
+	cd build && cmake .. && make
 	build/day${day}
