@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
     }
 
     // Get input data
-    std::string day_url = "https://adventofcode.com/2023/day/" + std::to_string(day) + "/input";     
+    std::string day_url = "https://adventofcode.com/2024/day/" + std::to_string(day) + "/input";     
     std::string cookie = get_cookie();
     std::string input;
 
