@@ -17,6 +17,8 @@ day_setup:
 		echo "Solution file already created. Skipping..."; \
 	fi
 
+build:
+	cd build && cmake && make
 
 run:
 	clang-format day${day}/*.cpp 
