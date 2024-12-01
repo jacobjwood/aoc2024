@@ -6,3 +6,11 @@ Now that I'm a "proper" software engineer (still ML focused), it's time to bite 
 
 - Libcurl required inside of lib folder.
 - clang-format and cmake installed.
+
+## Lessons Learned
+
+### Day 1
+
+- Templates are useful
+- Methods are unintuitively named coming from Python
+- Back inserter is a thing
