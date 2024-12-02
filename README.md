@@ -14,3 +14,7 @@ Now that I'm a "proper" software engineer (still ML focused), it's time to bite 
 - Templates are useful
 - Methods are unintuitively named coming from Python
 - Back inserter is a thing
+
+### Day 2
+
+- Nothing learned here, just disappointed in myself. After all the LC this year and I still screw up basic edge cases. Nested conditionals not pretty either.

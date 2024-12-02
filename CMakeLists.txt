@@ -19,3 +19,4 @@ add_library(helpers helpers/helpers.cpp)
 # Link against curl
 target_link_libraries(get_input_day_x curl)
 add_executable(day1 day1/solution.cpp helpers/helpers.cpp)
+add_executable(day2 day2/solution.cpp helpers/helpers.cpp)
