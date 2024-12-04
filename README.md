@@ -23,3 +23,8 @@ Now that I'm a "proper" software engineer (still ML focused), it's time to bite 
 
 - Thank god regex is in the standard library as of C++11
 - Iterators can be more efficient doing left increment instead of right increment, because i++ reconstructs a temporary variable. For primitives this isn't a problem, but for more complex iterators it can lead to slowdown.
+
+### Day 4
+
+- Tuples/pairs are not hashable - need to declare a function.
+- Vector of tuples don't have a default constructor so are more verbose to create
