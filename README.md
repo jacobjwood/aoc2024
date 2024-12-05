@@ -28,3 +28,8 @@ Now that I'm a "proper" software engineer (still ML focused), it's time to bite 
 
 - Tuples/pairs are not hashable - need to declare a function.
 - Vector of tuples don't have a default constructor so are more verbose to create
+
+
+### Day 5
+
+- Hacky. Should be more efficient than this but brute force still works.

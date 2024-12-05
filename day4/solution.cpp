@@ -4,6 +4,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 // A hash function used to hash a pair of any kind
 // TODO: Understand this better
