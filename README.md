@@ -41,3 +41,9 @@ Now that I'm a "proper" software engineer (still ML focused), it's time to bite 
 ### Day 7
 
 Never assume input can be parsed into hashmap. Ended up with hash collision that I missed for hours wondering why things weren't working. Iterative solution with bitmask was interesting but would've been bad for part 2.
+
+
+### Day 8
+
+Good food.
+
