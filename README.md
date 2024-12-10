@@ -47,3 +47,6 @@ Never assume input can be parsed into hashmap. Ended up with hash collision that
 
 Good food.
 
+### Day 9 
+
+I hate my life. Why do I torture myself like this.
