@@ -50,3 +50,7 @@ Good food.
 ### Day 9 
 
 I hate my life. Why do I torture myself like this.
+
+### Day 10
+
+Redemption.
