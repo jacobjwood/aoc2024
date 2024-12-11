@@ -47,10 +47,14 @@ Never assume input can be parsed into hashmap. Ended up with hash collision that
 
 Good food.
 
-### Day 9 
+### Day 9
 
 I hate my life. Why do I torture myself like this.
 
 ### Day 10
 
 Redemption.
+
+### Day 11
+
+Thought was DP. Then used hashmap. Was not DP.
