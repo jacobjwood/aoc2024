@@ -58,3 +58,7 @@ Redemption.
 ### Day 11
 
 Thought was DP. Then used hashmap. Was not DP.
+
+### Day 12
+
+Interesting. Leetcode prepared me well for this.
