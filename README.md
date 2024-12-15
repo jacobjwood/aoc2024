@@ -71,3 +71,6 @@ Maths degree going in bin. Also precision go brrr.
 
 Mod doesn't work properly in C++. Fun printing stuff.
 
+### Day 15
+
+NEED TO STOP TRYING TO DO TWO THINGS IN THE SAME LINE OF CODE. Mutation nightmare, state passing nightmare.
