@@ -66,3 +66,8 @@ Interesting. Leetcode prepared me well for this.
 ### Day 13
 
 Maths degree going in bin. Also precision go brrr.
+
+### Day 14
+
+Mod doesn't work properly in C++. Fun printing stuff.
+
