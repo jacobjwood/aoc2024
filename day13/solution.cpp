@@ -4,6 +4,8 @@
 #include <vector>
 #include <unordered_map>
 #include <sstream>
+#include <climits>
+#include <cmath>
 
 struct ClawGame {
     std::pair<long long, long long> a;
@@ -86,57 +88,67 @@ long long part2(std::string input) {
         cg.target.second += 10000000000000;
 
 
-        long long a_div = std::min(cg.target.first / cg.a.first, cg.target.second / cg.a.second);
-        long long b_div = std::min(cg.target.first / cg.b.first, cg.target.second / cg.b.second);
-        std::cout << a_div << " " << b_div << std::endl;
-
-        // Try a_div and b_div, and find swap
-        // if you swap a for b
-        std::pair<long long, long long> ab_diff = {cg.b.first - cg.a.first, cg.b.second - cg.a.second};
-
-        // Until it's just under
-        long long b_if_a_div = std::min((cg.target.first - (a_div * cg.a.first)) / cg.b.first, (cg.target.second - (a_div * cg.a.second)) / cg.b.second);
-        long long a_if_b_div = std::min((cg.target.first - (b_div * cg.b.first)) / cg.a.first, (cg.target.second - (b_div * cg.b.second)) / cg.a.second);
-        std::cout << "REM: " << b_if_a_div << " " << a_if_b_div << std::endl;
-
-        std::pair<long long, long long> a_div_curr = {a_div * cg.a.first + b_if_a_div * cg.b.first, a_div * cg.a.second + b_if_a_div * cg.b.second};
-        std::pair<long long, long long> b_div_curr = {b_div * cg.b.first + a_if_b_div * cg.a.first, b_div * cg.b.second + a_if_b_div * cg.a.second};
-
-        int tolerance = 10000000;
-        int lc = 0;
-        while (lc < tolerance) {
-            if (((a_div_curr.first == cg.target.first) && (a_div_curr.second == cg.target.second))) {
-               costs += a_div * a_cost + b_if_a_div * b_cost;
-            }
-            if (((a_div_curr.first % ab_diff.first) == 0) && ((a_div_curr.second % ab_diff.second) == 0) && ((a_div_curr.second / ab_diff.second) == (a_div_curr.first / ab_diff.first))) {
-                std::cout << "FOUND A DIV" << std::endl;
-                long long delta = a_div_curr.second / ab_diff.second;
-                costs += (a_div - delta) * a_cost + (b_if_a_div + delta) * b_cost;
-                break;
-            }
-            a_div_curr = {a_div_curr.first + cg.b.first, a_div_curr.second + cg.b.second};
-            b_if_a_div++;
-            lc++;
+        // We check for a solution
+        // na0 + mb0 = t0 + 1000000
+        // na1 + mb1 = t1 + 1000000
+        // n(a0 - a1) + m (b0 - b1) = t0 - t1
+        // iterate over n, m
+        // a0 b0 m = f + t0
+        // a1 b1 n = f + t1
+        long long quotient = (cg.a.first * cg.b.second - cg.b.first * cg.a.second);
+        if (quotient == 0) {
+            std::cout << "ZERO QUOT" << std::endl;
+            continue;
         }
-
-        lc = 0;
-        while (lc < tolerance) {
-            if (((b_div_curr.first == cg.target.first) && (b_div_curr.second == cg.target.second))) {
-               costs += a_if_b_div * a_cost + b_div * b_cost;
-            }
-            if (((b_div_curr.first % ab_diff.first) == 0) && ((b_div_curr.second % ab_diff.second) == 0) && ((b_div_curr.second / ab_diff.second) == (b_div_curr.first / ab_diff.first))) {
-                std::cout << "FOUND A DIV" << std::endl;
-                long long delta = b_div_curr.second / ab_diff.second;
-                costs += (a_div + delta) * a_cost + (b_if_a_div - delta) * b_cost;
-                break;
-            }
-            b_div_curr = {b_div_curr.first + cg.a.first, b_div_curr.second + cg.a.second};
-            a_if_b_div++;
-            lc++;
-            // if (lc > tolerance) {
-            //     break;
-            // }
+        long double inverse_factor = (cg.a.first * cg.b.second - cg.b.first * cg.a.second);
+        long double inverse_summation_m = (cg.b.second * cg.target.first - cg.b.first * cg.target.second);
+        long double inverse_summation_n = (cg.target.second * cg.a.first - cg.a.second * cg.target.first);
+        double epsilon = 0.00001;
+        double m_d = inverse_summation_m / inverse_factor;
+        double n_d = inverse_summation_n / inverse_factor;
+        long long m = (long long) std::round(m_d);
+        long long n = (long long) std::round(n_d);
+        double delta_m = std::abs(std::round(m_d) - m_d);
+        double delta_n = std::abs(std::round(n_d) - n_d);
+        // std::cout << m << " " << n << std::endl;
+        if ((m >= 0) && (n >= 0) && (delta_m < epsilon) && (delta_n < epsilon)) {
+            costs += (m * a_cost + n * b_cost);
         }
+        // long long delta_a = cg.a.first - cg.a.second;
+        // long long delta_b = cg.b.first - cg.b.second;
+        // long long delta_t = cg.target.first - cg.target.second;
+
+        // // std::cout << delta_a << " " << delta_b << " " << delta_t << std::endl;
+        // int threshold = 100000;
+        // long long cost1 = LLONG_MAX;
+        // long long cost2 = LLONG_MAX;
+        // for (int i = 0; i < threshold; i++) {
+        //     for (int j = 0; j < threshold; j++ ) {
+
+        //         if (((i * delta_a + j * delta_b) > delta_t) && ((j * delta_a + i * delta_b) > delta_t)) {
+        //             break;
+        //         }
+                
+        //         if ((i * delta_a + j * delta_b) == delta_t) {
+        //             // std::cout << "MATCH" << std::endl;
+        //             cost1 = std::min(cost1, i * a_cost + j * b_cost);
+        //         } 
+                
+        //         if ((j * delta_a + i * delta_b) == delta_t) {
+        //             // std::cout << "MATCH2" << std::endl;
+        //             cost2 = std::min(cost2, j * a_cost + i * b_cost);
+        //         }
+        //     }
+        // }
+
+        // long long poss_cost = std::min(cost1, cost2);
+        // if (poss_cost != LLONG_MAX) {
+        //     costs += poss_cost;
+        // }
+
+        
+
+
 
     }
 

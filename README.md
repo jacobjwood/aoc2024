@@ -62,3 +62,7 @@ Thought was DP. Then used hashmap. Was not DP.
 ### Day 12
 
 Interesting. Leetcode prepared me well for this.
+
+### Day 13
+
+Maths degree going in bin. Also precision go brrr.
