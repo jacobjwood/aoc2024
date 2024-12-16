@@ -74,3 +74,7 @@ Mod doesn't work properly in C++. Fun printing stuff.
 ### Day 15
 
 NEED TO STOP TRYING TO DO TWO THINGS IN THE SAME LINE OF CODE. Mutation nightmare, state passing nightmare.
+
+### Day 16
+
+Who needs time complexity when you've got C++.
